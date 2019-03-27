@@ -1,4 +1,4 @@
-package repository.impl;
+package xi.feng.repository.impl;
 
 import static org.junit.Assert.*;
 
