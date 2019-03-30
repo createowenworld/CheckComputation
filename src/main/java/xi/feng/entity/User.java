@@ -7,7 +7,11 @@ import java.util.Date;
 import org.hibernate.validator.internal.util.privilegedactions.NewInstance;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
+/**
+ * t_oc_user用户表实体类
+ * @author xi-xi
+ *
+ */
 @Document(collection="t_oc_user") //指定存放集合
 public class User implements Serializable{
 	private static final long serialVersionUID = -3258839839160856613L;

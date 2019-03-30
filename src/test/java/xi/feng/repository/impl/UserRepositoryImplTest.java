@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import xi.feng.Application;
 import xi.feng.entity.User;
 import xi.feng.repository.UserRepository;
+import xi.feng.util.DaoUtils;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes=Application.class)// 指定spring-boot的启动类 
@@ -22,7 +23,7 @@ public class UserRepositoryImplTest {
 	@Test
 	public void testSaveUser() {
 		User user = new User();
-		user.setUser_id(System.currentTimeMillis());
+		user.setUser_id(DaoUtils.getPrimaryId("t_oc_user"));
 		user.setCreate_time(new Date());
 		user.setLast_modify_time(new Date());
 		user.setUser_account("admin");
