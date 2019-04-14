@@ -1,7 +1,6 @@
 package xi.feng.util;
 
 
-import java.io.UnsupportedEncodingException;
 
 import org.apache.commons.lang.StringUtils;
 

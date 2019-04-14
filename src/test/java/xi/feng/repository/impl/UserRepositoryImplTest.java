@@ -1,11 +1,15 @@
 package xi.feng.repository.impl;
 
 import static org.junit.Assert.*;
+import static org.mockito.Matchers.intThat;
 
+import java.util.Arrays;
 import java.util.Date;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -20,6 +24,7 @@ import xi.feng.util.DaoUtils;
 public class UserRepositoryImplTest {
 	@Autowired
 	private UserRepository userDao;
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	@Test
 	public void testSaveUser() {
 		User user = new User();
@@ -49,4 +54,21 @@ public class UserRepositoryImplTest {
 		fail("Not yet implemented");
 	}
 
+	@Test
+	public void test1 (){
+		int[] nums = {-1,-2,-3,-4,-5};
+		int target = -8;
+		int length = nums.length;
+		int [] returnIndex = new int[2];
+		for (int i = 0 ;i < length - 1; i ++ ) {
+			for (int j = i + 1;j < length; j ++ ) {
+				if (nums[j] == target - nums[i]) {
+					returnIndex[0] = i;
+					returnIndex[1] = j;
+				}
+			}
+		}
+		logger.info("spring boot 集成log4j开始！");
+		System.out.println("++++++++++++++++++++++++++++:" + Arrays.toString(returnIndex));
+	}
 }
