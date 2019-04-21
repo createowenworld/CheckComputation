@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Component;
 
 import com.mongodb.WriteResult;
+import com.mongodb.client.result.UpdateResult;
 
 import xi.feng.entity.User;
 import xi.feng.repository.UserRepository;
