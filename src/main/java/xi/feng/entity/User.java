@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.hibernate.validator.internal.util.privilegedactions.NewInstance;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 /**

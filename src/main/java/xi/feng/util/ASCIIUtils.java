@@ -12,6 +12,9 @@ import org.apache.commons.lang.StringUtils;
  *
  */
 public class ASCIIUtils {
+	/**
+	 * 数字校验
+	 */
 	public static final String REGEX = "^\\d+$";
 	
 	/**

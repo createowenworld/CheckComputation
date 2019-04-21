@@ -1,0 +1,54 @@
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Poppins Light'), local('Poppins-Light'), url(pxiByp8kv8JHgFVrLDz8Z1xlEw.woff) format('woff');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Poppins Regular'), local('Poppins-Regular'), url(pxiEyp8kv8JHgFVrJJfedA.woff) format('woff');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Poppins Medium'), local('Poppins-Medium'), url(pxiByp8kv8JHgFVrLGT9Z1xlEw.woff) format('woff');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Poppins SemiBold'), local('Poppins-SemiBold'), url(pxiByp8kv8JHgFVrLEj6Z1xlEw.woff) format('woff');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Poppins Bold'), local('Poppins-Bold'), url(pxiByp8kv8JHgFVrLCz7Z1xlEw.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Roboto Light'), local('Roboto-Light'), url(KFOlCnqEu92Fr1MmSU5fBBc-.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url(KFOmCnqEu92Fr1Mu4mxM.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Roboto Medium'), local('Roboto-Medium'), url(KFOlCnqEu92Fr1MmEU9fBBc-.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Roboto Bold'), local('Roboto-Bold'), url(KFOlCnqEu92Fr1MmWUlfBBc-.woff) format('woff');
+}

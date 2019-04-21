@@ -1,7 +1,6 @@
 package xi.feng.repository.impl;
 
 import static org.junit.Assert.*;
-import static org.mockito.Matchers.intThat;
 
 import java.util.Arrays;
 import java.util.Date;
