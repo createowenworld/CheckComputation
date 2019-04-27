@@ -49,11 +49,11 @@ public class UserRepositoryImpl implements UserRepository {
         Query query = new Query(Criteria.where("id").is(user.getUser_id()));
         Update update = new Update().set("user_account", user.getUser_account()).set("user_pwd", user.getUser_pwd());
         //更新查询返回结果集的第一条
-        WriteResult result =mongoTemplate.updateFirst(query,update,User.class);
+        UpdateResult result =mongoTemplate.updateFirst(query,update,User.class);
         //更新查询返回结果集的所有
         // mongoTemplate.updateMulti(query,update,UserEntity.class);
         if(result!=null)
-            return result.getN();
+            return result.getModifiedCount();
         else
             return 0;
     }

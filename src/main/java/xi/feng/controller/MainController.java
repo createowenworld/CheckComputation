@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller
+@Controller("/CheckComputation")
 public class MainController {
 
     @GetMapping("/")
@@ -18,10 +18,10 @@ public class MainController {
         return "index";
     }
 
-    @RequestMapping("/login")
+    @GetMapping("/login")
     public String login() {
     	System.out.println("+++++++++++++++++++++++++++++");
-        return "login";
+        return "html/login.html";
     }
 
     @GetMapping("/login-error")

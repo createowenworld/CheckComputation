@@ -10,7 +10,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId><!-- 依赖管理 -->
-		<version>1.5.3.RELEASE</version><!-- 可选其他版本，现在已有2.0.0.RELEASE -->
+		<version>2.0.0.RELEASE</version><!-- 可选其他版本，现在已有1.5.3.RELEASE -->
 		<relativePath></relativePath>
 	</parent>
 	<url>http://maven.apache.org</url>
@@ -101,10 +101,33 @@
 			</dependency> -->
 		<!-- security -->
 
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency> -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<!-- optional=true, 依赖不会传递, 该项目依赖devtools; 之后依赖boot项目的项目如果想要使用devtools, 
+				需要重新引入 -->
+			<optional>true</optional>
 		</dependency>
+		<dependency>
+			<groupId>javax.json.bind</groupId>
+			<artifactId>javax.json.bind-api</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse</groupId>
+			<artifactId>yasson</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.json</artifactId>
+			<version>1.1.2</version>
+		</dependency>
+
 		<dependency>
 			<groupId>com.sun.jna</groupId>
 			<artifactId>jna</artifactId>
