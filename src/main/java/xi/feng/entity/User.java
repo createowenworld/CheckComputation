@@ -4,13 +4,19 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.junit.runners.Parameterized.Parameter;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * t_oc_user用户表实体类
  * @author xi-xi
  *
  */
+
 @Document(collection="t_oc_user") //指定存放集合
 public class User implements Serializable{
 	private static final long serialVersionUID = -3258839839160856613L;
@@ -18,18 +24,23 @@ public class User implements Serializable{
 	@Id
 	private Long user_id;
 	//账号
+	@JsonProperty(value = "username")
 	private String user_account;
 	//密码
+	@JsonProperty(value = "password")
 	private String user_pwd;
 	//姓名
+	
 	private String user_nm;
 	//手机号码
 	private String user_phone;
 	//角色
 	private String user_role;
 	//创建时间
+	@DateTimeFormat(pattern = "YYYY-MM-dd HH:mm:ss")
 	private String create_time;
 	//最后修改时间
+	@DateTimeFormat(pattern = "YYYY-MM-dd HH:mm:ss")
 	private String last_modify_time;
 	
 	
@@ -84,5 +95,8 @@ public class User implements Serializable{
 		this.last_modify_time = sdf.format(last_modify_time);
 	}
 	
-	
+	public String toString () {
+		String str = "user_account:" + user_account + ",user_pwd:" + user_pwd;
+		return str;
+	}
 }
