@@ -5,13 +5,19 @@ $(function () {
 var login = function () {
 //	序列化获得表单数据，结果为：user_id=12&user_name=John&user_age=20
 	debugger;
-	var data=$('#loginFrom').serialize();
-//	submitData是解码后的表单数据，结果同上
-	var submitData=decodeURIComponent(data,true);
-	console.log(submitData);
+	var username = $.trim($("#username").val());
+	var password = $.trim($("#password").val());
+	if (!username || !password) {
+		$("#tipMsg").html("用户名或密码不能为空！");
+		return;
+	}
+	if (password.length < 5) {
+		$("#tipMsg").html("密码长度不符合要求！");
+		return;
+	}
 	var data = {
-			username : "fsfsf",
-			password : "33333"
+			username : username,
+			password : password
 	}
 	$.ajax({
 		type:"post",
@@ -21,12 +27,14 @@ var login = function () {
 		async:true,//true为异步，false为同步
 		url:'index',
 		beforeSend:function(){
-			console.log(submitData);
+			console.log(data);
 		},
 		success:function(result){
 			//请求成功时
 			if (result.code == 0) {
 				window.location.href = "toLogin";
+			} else {
+				$("#tipMsg").html(result.msg);
 			}
 		},
 		complete:function(){

@@ -3,7 +3,8 @@ package xi.feng.entity;
 public enum  ResultCode {
 
     SUCCESS(0, "请求成功"),
-    WARN(-1, "网络异常，请稍后重试");
+    WARN(-1, "网络异常，请稍后重试"),
+	CHECKUSER(-2,"用户名或密码错误，请重新输入！");
 
     private int code;
     private String msg;

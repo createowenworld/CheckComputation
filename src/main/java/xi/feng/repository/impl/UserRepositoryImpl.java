@@ -7,7 +7,6 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Component;
 
-import com.mongodb.WriteResult;
 import com.mongodb.client.result.UpdateResult;
 
 import xi.feng.entity.User;
@@ -67,5 +66,11 @@ public class UserRepositoryImpl implements UserRepository {
         Query query=new Query(Criteria.where("user_id").is(id));
         mongoTemplate.remove(query,User.class);
     }
+
+	@Override
+	public User findUserByQuery(Query query) {
+		 User user =  mongoTemplate.findOne(query , User.class);
+	     return user;
+	}
 
 }

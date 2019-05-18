@@ -5,12 +5,15 @@ import static org.junit.Assert.*;
 import java.util.Arrays;
 import java.util.Date;
 
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import xi.feng.Application;
@@ -51,6 +54,13 @@ public class UserRepositoryImplTest {
 	@Test
 	public void testDeleteUserById() {
 		fail("Not yet implemented");
+	}
+	
+	@Test
+	public void testFindUserByQuery () {
+		Query query = new Query(Criteria.where("user_account").is("admin").and("user_pwd").is("admin"));
+		User user = userDao.findUserByQuery(query);
+		System.out.println(user.toString());
 	}
 
 	@Test

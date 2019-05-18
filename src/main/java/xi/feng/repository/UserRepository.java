@@ -1,5 +1,7 @@
 package xi.feng.repository;
 
+import org.springframework.data.mongodb.core.query.Query;
+
 import xi.feng.entity.User;
 /**
  * 用户信息操作接口
@@ -18,6 +20,12 @@ public interface UserRepository {
 	 * @return 用户
 	 */
 	public User findUserByUserName(String userName);
+	/**
+	 * 根据查询条件查询一条用户信息
+	 * @param query 
+	 * @return 用户
+	 */
+	public User findUserByQuery(Query query);
 	/**
 	 * 更新用户信息
 	 * @param user
