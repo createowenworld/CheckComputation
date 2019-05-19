@@ -29,8 +29,8 @@
   // the base DOM structure needed to create a modal
   var templates = {
     dialog:
-      "<div class='bootbox modal  fade show' tabindex='-1' role='dialog'>" +
-        "<div class='modal-dialog modal-lg' role='document'>" +
+      "<div class='bootbox modal' tabindex='-1' role='dialog'>" +
+        "<div class='modal-dialog'>" +
           "<div class='modal-content'>" +
             "<div class='modal-body'><div class='bootbox-body'></div></div>" +
           "</div>" +
@@ -38,7 +38,7 @@
       "</div>",
     header:
       "<div class='modal-header'>" +
-        "<h5 class='modal-title'></h5>" +
+        "<h4 class='modal-title'></h4>" +
       "</div>",
     footer:
       "<div class='modal-footer'></div>",
@@ -601,20 +601,20 @@
     if (options.title) {
       body.before(templates.header);
     }
-    if (options.title) {
-        dialog.find(".modal-title").html(options.title);
-      }
+
     if (options.closeButton) {
       var closeButton = $(templates.closeButton);
 
       if (options.title) {
-        dialog.find(".modal-header").append(closeButton);
+        dialog.find(".modal-header").prepend(closeButton);
       } else {
         closeButton.css("margin-top", "-10px").prependTo(body);
       }
     }
 
-    
+    if (options.title) {
+      dialog.find(".modal-title").html(options.title);
+    }
 
     if (buttonStr.length) {
       body.after(templates.footer);

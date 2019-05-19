@@ -1,5 +1,7 @@
 package xi.feng.repository;
 
+import java.util.List;
+
 import org.springframework.data.mongodb.core.query.Query;
 
 import xi.feng.entity.User;
@@ -37,4 +39,16 @@ public interface UserRepository {
 	 * @param id
 	 */
 	public void deleteUserById(Long id);
+	/**
+	 *根据查询条件获取用户信息
+	 * @param query
+	 * @return
+	 */
+	List<User> findUserListByQuery(Query query);
+	/**
+	 * 获取数量
+	 * @param query
+	 * @return
+	 */
+	Long getCount(Query query);
 }

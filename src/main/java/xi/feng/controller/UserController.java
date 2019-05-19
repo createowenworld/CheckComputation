@@ -1,5 +1,11 @@
 package xi.feng.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.print.attribute.HashAttributeSet;
+
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,6 +44,31 @@ public class UserController {
 		} else {
 			return new Result(ResultCode.CHECKUSER);
 		}
-		
+	}
+	/**
+	 * 分页查询用户列表
+	 * @param start
+	 * @param length
+	 * @param keyword
+	 * @return
+	 */
+	@RequestMapping("/getUserInfo")
+	public Result getUserInfo (Integer start, Integer length, String keyword) {
+		logger.info("getUserInfo param:" + start + "," + length + "," + keyword);
+		if (start == null ) {
+			start = 0;
+		}
+		if (length == null ) {
+			length = 10;
+		}
+		Query query = new Query(Criteria.where("user_account").regex(keyword));
+		Long total = userDao.getCount(query);
+		//分页查询
+		query.limit(length).skip(start*length);
+		List<User> list = userDao.findUserListByQuery(query);
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		returnMap.put("total", total);
+		returnMap.put("data", list);
+		return new Result(ResultCode.SUCCESS, returnMap);
 	}
 }

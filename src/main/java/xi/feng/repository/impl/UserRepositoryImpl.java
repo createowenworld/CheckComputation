@@ -1,5 +1,7 @@
 package xi.feng.repository.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -72,5 +74,14 @@ public class UserRepositoryImpl implements UserRepository {
 		 User user =  mongoTemplate.findOne(query , User.class);
 	     return user;
 	}
-
+	
+	@Override
+	public List<User> findUserListByQuery(Query query) {
+		List<User> list =  mongoTemplate.find(query, User.class);
+	     return list;
+	}
+	@Override
+	public Long getCount(Query query) {
+		return mongoTemplate.count(query, "t_oc_user");
+	}
 }

@@ -42,8 +42,8 @@ jQuery.extend({
             document.body.appendChild(io);  
    
             return io             
-    },  
-    createUploadForm: function(id, fileElementId, tag_name, tag_link, tag_sort, tag_status, tag_id)  
+    }, 
+    createUploadForm: function(id, fileElementId, tag_name, tag_link, tag_sort, tag_status, tag_id,bootboxCase)  
     {  
         //create form     
         var formId = 'jUploadForm' + id;  
@@ -57,6 +57,14 @@ jQuery.extend({
         //--end  
         var form = $('<form  action="" method="POST" name="' + formId + '" id="' + formId + '" enctype="multipart/form-data"></form>');   
         var oldElement = $('#' + fileElementId);  
+        if(bootboxCase == null)
+    	{
+        	oldElement = $('#' + fileElementId);  
+    	}
+        else
+    	{
+        	oldElement = bootboxCase.find('#' + fileElementId);  
+    	}
         var newElement = $(oldElement).clone();  
         //--  
         var tagNameElement = '<input type="text" name="tag_name" value="'+tag_name+'">';    
@@ -86,8 +94,13 @@ jQuery.extend({
     ajaxFileUpload: function(s) {  
         // TODO introduce global settings, allowing the client to modify them for all requests, not only timeout          
         s = jQuery.extend({}, jQuery.ajaxSettings, s);  
-        var id = new Date().getTime()          
-        var form = jQuery.createUploadForm(id, s.fileElementId, s.tag_name, s.tag_link, s.tag_sort, s.tag_status, s.tag_id);  
+        var id = new Date().getTime()
+        var bootboxCase = null;
+        if(s.bootboxObject)
+    	{
+        	bootboxCase = s.bootboxObject;
+    	}
+        var form = jQuery.createUploadForm(id, s.fileElementId, s.tag_name, s.tag_link, s.tag_sort, s.tag_status, s.tag_id,bootboxCase);  
         var io = jQuery.createUploadIframe(id, s.secureuri);  
         var frameId = 'jUploadFrame' + id;  
         var formId = 'jUploadForm' + id;          
