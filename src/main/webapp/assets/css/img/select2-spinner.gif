@@ -1,0 +1,14 @@
+<html>
+<head><title>404 Not Found</title></head>
+<body>
+<h1>404 Not Found</h1>
+<ul>
+<li>Code: NoSuchKey</li>
+<li>Message: The specified key does not exist.</li>
+<li>Key: assets/css/img/select2-spinner.gif</li>
+<li>RequestId: 0876D3FECF6D6D09</li>
+<li>HostId: gd+3Bns9G7vRzrw/tSfbu/jdnVzgT82JHHEvxEsebYCZZ2ma6SEjlqTi5pKNoQd/</li>
+</ul>
+<hr/>
+</body>
+</html>

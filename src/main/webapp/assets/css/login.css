@@ -1,0 +1,242 @@
+@charset "utf-8";
+*:focus {
+	outline: none;
+}
+input {
+	outline: none;
+}
+* {
+	font-size: 9pt;
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-family: 'NSimSun';
+	font-size: 12px;
+	margin: 0 auto;
+	min-width: 630px;
+}
+ul {
+	display: block;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+li {
+	display: block;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+img {
+	border: 0;
+}
+.login_top {
+	width: 100%;
+	height: 139px;
+	background: #fff;
+	float: left
+}
+.login_top_logo {
+	width: 1024px;
+	height: 139px;
+	margin: 0px 0px 0px 50px;
+}
+.login_top a img {
+	width: 600px;
+	height: 81px;
+	float: left;
+	margin: 45px 0px 0px 1px;
+}
+.login_main {
+	width: 100%;
+	height: 400px;
+	float: left;
+}
+.login_center {
+	width: 1024px;
+	height: 400px;
+	margin: 0px auto;
+}
+.login_lt {
+	width: 611px;
+	height: 400px;
+	background: url(../img/login_img/login_lt_pic.gif) no-repeat;
+	float: left;
+	margin-left: 2px;
+}
+.login_right {
+	height: 319px;
+	width: 309px;
+	background: url(../img/login_img/user_right.gif) no-repeat;
+	float: right;
+	margin-top: 35px;
+}
+h2.user {
+	width: 250px;
+	height: 30px;
+	line-height:30px;
+	font-size: 16px;
+	font-weight: bold;
+	color: #fff;
+	letter-spacing:2px;
+	float: left;
+	padding: 16px 0px 0px 28px;
+}
+.fieldwrap,.automatic,.button {
+	width: 348px;
+	height: auto;
+	font-size: 12px;
+	color: #000;
+	float: left;
+	margin-top: 10px;
+	margin-bottom: 1px;
+	margin-left:29px;
+}
+.name {
+	width: 248px;
+	height: 30px;
+	font-size:14px;
+	line-height: 30px;
+	color:#fff;
+	float: left;
+}
+span.user_prompt{
+	width:auto;
+	height:30px;
+	line-height:30px;
+	font-size:12px;
+	color:#e2e2e2;
+	float:right;
+	margin-right:20px;
+	margin-top:5px;
+}
+.inputwrap{
+	width: 246px;
+	height: 25px;
+	line-height: 28px;
+	border: 1px solid #656565;
+	background: #fff;
+	float: left;
+}
+.inputtext {
+	width: 246px;
+	line-height: 28px;
+	border: none;
+	text-indent: 5px;
+	color: #CCC;
+	background: #fff;
+	float: left;
+}
+text {
+	font-size: 12px;
+	color: #CCC;
+	text-indent: 2em;
+}
+.inputwrap1 {
+	width: 66px;
+}
+#loginbtnwrap {
+	width: 90px;
+	line-height: 29px;
+	letter-spacing: 5px;
+	text-align: center;
+	cursor: pointer;
+	color: #fff;
+	font-size: 12px;
+	float: left
+}
+.automatic{
+	height:20px;
+}
+#checkbox{
+	width:14px;
+	height:14px;
+	border:1px solid #000;
+	background:#fff;
+	float:left;
+	margin-top:3px;
+	margin-right:6px;
+}
+span.rem_password{
+	width:auto;
+	height:20px;
+	line-height:20px;
+	color:#e2e2e2;
+	font-size:12px;
+	float:left
+}
+.button{
+	width:252px;
+	float:left;
+}
+#loginbtnwrap{
+	width:252px;
+	height:38px;
+	font-size:16px;
+	letter-spacing:16px;
+	font-weight:bold;
+	background:url(../img/login_img/login_but.gif) no-repeat;
+	float:left;
+}
+h2.num{
+	font-size:12px;
+	color:#e2e2e2;
+	float:left
+}
+.automatic a{
+	font-size:14px;
+	color:#fff;
+	float:right;
+	margin-right:10px;
+	
+}
+/*other_information begain*/
+.other_information{
+	width:100%;
+	height:55px;
+	background:#fff;
+	float:left
+}
+.other_infor_rt{
+	width:1024px;
+	height:105px;
+	margin:0px auto
+}
+.other_infor_rt a{
+	width:285px;
+	height:32px;
+	line-height:32px;
+	font-size:16px;	
+	font-family:"SimSun";
+	cursor:pointer;
+	color:#000;	
+	float:right;
+	margin-right:30px;
+	margin-top:18px;
+}
+.other_infor_rt a img{
+	width:32px;
+	height:32px;
+	float:left;
+	margin:0px 5px;
+}
+
+/*other_information END*/
+/*login footer begain*/
+.login_bottom {
+	width: 100%;
+	height: 60px;
+	float: left;
+}
+.login_bottom p {
+	width: 1024px;
+	height: 50px;
+	line-height: 50px;
+	color: #2d2d2d;
+	font-size: 12px;
+	text-align: center;	
+	
+	margin: 0px auto;
+}

@@ -1,9 +1,10 @@
 $(function () {
-	getUserInfo();
+	var url = "getUserInfo";
+	getUserInfo(url);
 })
-function getUserInfo () {
+function getUserInfo (url) {
 	debugger;
-	$.ajax({
+	/*$.ajax({
 		type: "POST",
 		contentType: "application/json",
 		url: "getUserInfo",
@@ -20,13 +21,20 @@ function getUserInfo () {
 				alert(Curedata.msg);
 			}
 		}
-	});
+	});*/
+	InitTable(url);
 }
+//绑定查询事件
+$("#search").on("click",function () {
+	var keyword = $.trim($("#keyword").val());
+	var url = "getUserInfo?keyword=" + decodeURIComponent(keyword);
+	getUserInfo(url);
+});
 
 /**
  * 初始化表格
  */
-function InitTable (Curedata) {
+function InitTable (url) {
 	$('#ShowTable').dataTable({
 		sDom: "Tflt<'row DTTTFooter'<'col-sm-6'i><'col-sm-6'p>>",
 		oTableTools: {"aButtons": []},
@@ -54,51 +62,124 @@ function InitTable (Curedata) {
 		bAutoWidth: false,// 自动宽度
 		bDestroy: true,
 		iDisplayLength: 10, // 每页显示多少行
-		data: Curedata.data,
+		ajax: url,
 		columns:
 			[
-				{ data: "_id",width:80,"mRender":function(data,type,full)
+				{ data: "user_nm",width:"16%"},
+				{ data: "user_phone",width:"16%"},
+				{ data: "username",width:"16%"},
+				{ data: "user_role",width:"16%"},
+				{ data: "create_time",width:"16%","mRender":function(data,type,full)
 					{
-					var ReturnHtml = "<a class='btn btn-danger btn-xs delete' onclick='CommitDelete(\"" + data + "\");'><i class='fa fa-trash-o'></i>删除任务</a>";
-					return ReturnHtml;
+						return data;
 					}
 				},
-				{ data: "srcrolename"},
-				{ data: "srcroutinename",width:150},
-				{ data: "tasktype",width:100},
-				{ data: "taskstate",width:100},
-				{ data: "remark",width:300,"mRender":function(data,type,full)
+				{ data: "user_id",width:"20%","mRender":function(data,type,full)
 					{
-					if(full.tasktype == "定时同步任务")
-					{
-						if(full.taskstate == "未启动")
-						{
-							var ReturnHtml = "<a class='btn btn-success btn-xs delete' onclick='DataChangeTaskStart(\"" + full._id + "\");'><i class='fa fa-play'></i>启动任务</a>";
-							return ReturnHtml;
-						}
-						else
-						{
-							var ReturnHtml = "<a class='btn btn-danger btn-xs delete' onclick='DataChangeTaskStop(\"" + full._id + "\");'><i class='fa fa-stop'></i>停止任务</a>";
-							return ReturnHtml;
-						}
-					}
-					else if(full.tasktype == "手动同步任务")
-					{
-						var ReturnHtml = "<a class='btn btn-azure btn-xs delete' onclick='DataChangeManualSync(\"" + full._id + "\");'><i class='fa fa-exchange'></i>开始同步</a>";
-						ReturnHtml = ReturnHtml + "&nbsp;<a class='btn btn-azure btn-xs delete' onclick='DataChangeManualExport(\"" + full._id + "\");'><i class='fa fa-table'></i>导出到Excel</a>";
-						return ReturnHtml;
-					}
-					else if(full.tasktype == "手动导出任务")
-					{
-						var ReturnHtml = "<a class='btn btn-warning btn-xs delete' onclick='DataChangeManualExport(\"" + full._id + "\");'><i class='fa fa-table'></i>手动导出</a>";
-						return ReturnHtml;
-					}
-					else
-					{
-						return "";
-					}
+					var ReturnHtml = " <a class='btn btn-primary btn-xs update' onclick='CommitDelete(\"" + data + "\");'><i class='fa fa-pencil-square-o' aria-hidden='true'></i>修改</a>";
+					ReturnHtml += " <a class='btn btn-danger btn-xs delete' onclick='CommitDelete(\"" + data + "\");'><i class='fa fa-trash-o'></i>删除</a>";
+					return ReturnHtml;
 					}
 				}
 				]
+	});
+}
+var FormBox = null;
+/************************************************************************************************
+ *  打开新建窗口
+ ************************************************************************************************/
+function OpenNew()
+{
+	FormBox = null;
+	FormBox = bootbox.dialog({
+		message: $("#myModal").html(),
+		title: "新增用户",
+		className: "modal-azure",
+		buttons: {
+			success: {
+				label: "提交保存",
+				className: "btn-azure",
+				callback: function ()
+				{
+					var CommitData = {};
+					FormBox.find("input").each(
+							function()
+							{
+								CommitData[$(this).attr('id')]=$(this).val();
+							}
+					);
+					FormBox.find("select").each(
+							function()
+							{
+								CommitData[$(this).attr('id')]=$(this).val();
+							}
+					);
+					if (CommitData["name"] == null || CommitData["name"] == "")
+					{
+						alert("交换表名称不能为空！");
+						return false;
+					}
+					debugger;
+					//提交前验证是否还有必填项未填
+					if (FormBox.find(".bx-text").hasClass("error") || FormBox.find(".bx-text").hasClass("isNull")) {
+						FormBox.find(".isNull").focus();
+						alert("有必填项未填写，请继续填写完整");
+						console.info(1);
+						return false;
+					}
+					else if (FormBox.find("#fromtable").find("option:selected").val() == "#")
+					{
+						alert("请选择来源表！");
+						console.info(2);
+						return false;
+					}
+					else if (FormBox.find("#totable").val() == "#" || !FormBox.find("#totable").val())
+					{
+						alert("请选择目标表！");
+						console.info(3);
+						return false;
+					}
+					else if (FormBox.find("#routinetype").val() == "增量交换" && !FormBox.find("#timestampcolumn").val())
+					{
+						alert("请填写时间戳列！");
+						return false;
+					}
+					else
+					{
+						//等待图开启
+						$("#foot").find("div").css("display","block");
+						$.ajax({
+							cache: true,
+							type: "POST",
+							url:"DataChangeRoutineCommitNew",
+							data:CommitData,
+							error: function(request)
+							{
+								alert("Connection error...");
+							},
+							success: function(result)
+							{
+								//等待图关闭
+								$("#foot").find("div").css("display","none");
+								var Curedata = $.extend(true, [],result);
+								if(Curedata.state == "0")
+								{
+									InitTable();
+								}
+								else
+								{
+									alert(Curedata.msg);
+								}
+							}
+						});
+					}
+					
+				}
+			},
+			"取消保存": {
+				className: "btn-danger",
+				callback: function () { }
+			}
+		}
 	});
 }

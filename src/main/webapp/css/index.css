@@ -4,15 +4,19 @@ html, body {
 	padding: 0;
 	width: 100%;
 	height: 100%;
+	font-size:16px;
 } /*这里是关键*/
 nav {
 	width: 100%;
 	height: 50px;
 	background-color: #009688;
 }
-
+label {
+	font-size: 16px;
+    padding: 10px;
+}
 nav, div {
-	border: 1px solid red;
+	/* border: 1px solid red; */
 }
 #title {
     float: left;
@@ -48,9 +52,86 @@ nav, div {
 	width:100%;
 	height:20%;
 	padding-left:15px;
+	border-bottom: 2px solid gray;
+    margin-bottom: 20px;
+}
+.search {
+	/* margin-top: 12%; */
+}
+.breadcrumb_div {
+	text-align:left;
+	margin-top: 10px;
+    margin-bottom: 5%;
 }
 .table_body {
 	width:100%;
-	height:80%;
-	padding-left:15px;
+	/* height:80%; */
+	padding:15px;
+}
+.addBtn {
+	line-height: 45px;
+    font-size: 13px;
+    font-size: 16px;
+    font-weight: 300;
+    padding: 0 20px;
+    height: 50px;
+}
+tr {
+	height: 35px;
+	border-top: 1px #ddd solid;
+}
+
+th {
+	border: 1px solid #ddd;
+	background-color: #ddd;
+	padding-left: 5px;
+	font-weight: bold;
+	text-align: center;
+}
+
+td {
+	text-align: center;
+}
+
+.input-sm,.form-horizontal .form-group-sm .form-control {
+	height: 25px;
+	padding: 0px 0px;
+}
+
+.DTTTFooter {
+	background-color: #fff;
+	background-image: none;
+	border: 0px solid #ddd;
+	border-top: 1px solid #ddd;
+}
+
+a:hover,a:focus {
+	color: #fff;
+}
+
+data-list-view a,a:hover,a:focus {
+	color: #000;
+}
+
+#help-tip {
+	width: 80px;
+}
+
+.modal-dialog {
+	width: 800px;
+}
+
+.modal-footer {
+	text-align: center;
+}
+
+.select2-choices {
+	margin: 0px 0px 0px 0px;
+	pading: 0px 0px 0px 0px;
+}
+/****************************************************
+*必填*号红色
+****************************************************/
+.validator {
+	color: red;
 }

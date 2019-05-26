@@ -61,14 +61,18 @@ public class UserController {
 		if (length == null ) {
 			length = 10;
 		}
-		Query query = new Query(Criteria.where("user_account").regex(keyword));
+		Query query = new Query();
+		if (StringUtils.isNotEmpty(keyword)) {
+			Criteria criteriaOk = new Criteria();
+			query.addCriteria(
+					criteriaOk.orOperator(Criteria.where("user_account").regex(keyword),
+							Criteria.where("user_phone").regex(keyword)));
+		}
 		Long total = userDao.getCount(query);
 		//分页查询
 		query.limit(length).skip(start*length);
 		List<User> list = userDao.findUserListByQuery(query);
-		Map<String, Object> returnMap = new HashMap<String, Object>();
-		returnMap.put("total", total);
-		returnMap.put("data", list);
-		return new Result(ResultCode.SUCCESS, returnMap);
+		logger.info("getUserInfo result:" + list);
+		return new Result(ResultCode.SUCCESS, list,total);
 	}
 }

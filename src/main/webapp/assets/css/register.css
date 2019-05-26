@@ -1,0 +1,91 @@
+h1,h2,h3,h4,h5,h6,ol,p,ul{font-family:Microsoft YaHei,arial,verdana,"Hiragino Sans GB",Hiragino Sans GB,"宋体";margin:0;padding:0;font-weight:400}
+header
+{
+	background:#0066ba;
+	height:60px;
+	width:100%;
+	z-index:100;
+	color:#fff;
+	transition:opacity 500ms;
+	position:relative
+}
+header a
+{
+	color:#fff;
+	padding: 0;
+    margin: 0;
+    border: 0;
+    outline: 0;
+    font-weight: inherit;
+    font-style: inherit;
+    font-family:Microsoft YaHei,arial,verdana,"Hiragino Sans GB",Hiragino Sans GB,"宋体";
+    font-size:24px;
+    vertical-align: baseline;
+}
+.header-fixed
+{
+	position:fixed;
+	top:0;
+	left:0
+}
+.header-logo
+{
+	margin:10px 30px 0 83px;
+	*zoom:1;
+	display:inline-block;
+	*display:inline;
+	zoom:1
+}
+.header-logo a
+{
+	display:block;
+	background-image:url(none);
+	background-image:url(none);
+	background-image:url(none);
+	background-repeat:no-repeat;
+	background-position:0 0;
+	background-color:transparent;
+	background:0 0;
+	background:none scroll 0 0 no-repeat transparent;
+	width:0;
+	height:0;
+	text-indent:-99999px
+}
+.logo
+{
+	font-family:'Microsoft YaHei';
+	line-height:60px;
+	width:150px;
+	margin-left:20px
+}
+.logo a:hover
+{
+	text-decoration:none
+}
+.logo span
+{
+	position:absolute;
+	top:20px;
+	left:130px;
+	width:120px;
+	line-height:24px;
+	color:#0066ba;
+	font-size:14px;
+	background-color:#fff;
+	text-align:center;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	font-family:"Microsoft YaHei";
+}
+.link-like,a
+{
+	color:#fff;
+	text-decoration:none;
+	cursor:pointer;
+	line-height:60px;
+	font-size:2em;
+	font-weight:400;
+	
+}
+.link-like:hover,a:hover{text-decoration:underline;color:#fff;}
