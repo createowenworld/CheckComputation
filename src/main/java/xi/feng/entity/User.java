@@ -1,15 +1,19 @@
 package xi.feng.entity;
 
+import static org.hamcrest.CoreMatchers.nullValue;
+
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.apache.logging.log4j.core.appender.rolling.action.IfFileName;
 import org.junit.runners.Parameterized.Parameter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * t_oc_user用户表实体类
@@ -22,19 +26,23 @@ public class User implements Serializable{
 	private static final long serialVersionUID = -3258839839160856613L;
 	//用户ID
 	@Id
+	@JsonProperty(value = "_id")
 	private Long user_id;
 	//账号
-	@JsonProperty(value = "username")
+	@JsonProperty(value = "account")
 	private String user_account;
 	//密码
-	@JsonProperty(value = "password")
+	@JSONField(serialize = false)//密码不序列化到前端JSON
+	@JsonProperty(value = "pwd")
 	private String user_pwd;
 	//姓名
-	
+	@JsonProperty(value = "name")
 	private String user_nm;
 	//手机号码
+	@JsonProperty(value = "phone")
 	private String user_phone;
 	//角色
+	@JsonProperty(value = "role")
 	private String user_role;
 	//创建时间
 	@DateTimeFormat(pattern = "YYYY-MM-dd HH:mm:ss")
@@ -44,7 +52,10 @@ public class User implements Serializable{
 	private String last_modify_time;
 	
 	
-	public Long getUser_id() {
+	public String getUser_id() {
+		return user_id + "";
+	}
+	public Long getLUser_id() {
 		return user_id;
 	}
 	public void setUser_id(Long user_id) {
@@ -96,7 +107,15 @@ public class User implements Serializable{
 	}
 	
 	public String toString () {
-		String str = "user_account:" + user_account + ",user_pwd:" + user_pwd;
+		String str = "user_id:" + user_id + ",user_account:" + user_account + ",user_pwd:" + user_pwd;
 		return str;
+	}
+	/**
+	 * 用户名一样就是同一个对象
+	 * @param user
+	 * @return
+	 */
+	public boolean equals (User user) {
+		return user_account.equals(user.getUser_account());
 	}
 }

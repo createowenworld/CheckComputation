@@ -16,8 +16,8 @@ var login = function () {
 		return;
 	}
 	var data = {
-			username : username,
-			password : password
+			account : username,
+			pwd : password
 	}
 	$.ajax({
 		type:"post",

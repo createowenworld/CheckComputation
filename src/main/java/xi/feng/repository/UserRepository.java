@@ -51,4 +51,9 @@ public interface UserRepository {
 	 * @return
 	 */
 	Long getCount(Query query);
+	/**
+	 * 根据ID查询数据
+	 */
+	User getUserById (Long _id);
+	void editUser(User user);
 }

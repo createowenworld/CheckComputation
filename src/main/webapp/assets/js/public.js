@@ -411,11 +411,11 @@ function AjaxToBoxCase(ReaderUrl, FormBox)
 		success : function(result)
 		{
 			var Curedata = $.extend(true, [], result);
-			if (Curedata.state == "0")
+			if (Curedata.code == 0)
 			{
 				FormBox.find("input").each(function()
 				{
-					FormBox.find("#" + $(this).attr('id')).val(Curedata.data[0][$(this).attr('id')]);
+					FormBox.find("#" + $(this).attr('id')).val(Curedata.data[$(this).attr('id')]);
 				});
 				FormBox.find("select").each(function()
 				{

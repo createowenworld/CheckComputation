@@ -2,6 +2,7 @@ package xi.feng.repository.impl;
 
 import java.util.List;
 
+import org.junit.validator.PublicClassValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -13,6 +14,7 @@ import com.mongodb.client.result.UpdateResult;
 
 import xi.feng.entity.User;
 import xi.feng.repository.UserRepository;
+import xi.feng.util.DaoUtils;
 
 @Component
 public class UserRepositoryImpl implements UserRepository {
@@ -26,6 +28,7 @@ public class UserRepositoryImpl implements UserRepository {
      */
     @Override
     public void saveUser(User user) {
+    	user.setUser_id(DaoUtils.getPrimaryId("t_oc_user"));
         mongoTemplate.save(user);
     }
 
@@ -65,8 +68,8 @@ public class UserRepositoryImpl implements UserRepository {
      */
     @Override
     public void deleteUserById(Long id) {
-        Query query=new Query(Criteria.where("user_id").is(id));
-        mongoTemplate.remove(query,User.class);
+        Query query=new Query(Criteria.where("_id").is(id));
+        mongoTemplate.remove(query, User.class);
     }
 
 	@Override
@@ -83,5 +86,14 @@ public class UserRepositoryImpl implements UserRepository {
 	@Override
 	public Long getCount(Query query) {
 		return mongoTemplate.count(query, "t_oc_user");
+	}
+	@Override
+	public User getUserById (Long _id) {
+		 Query query = new Query(Criteria.where("_id").is(_id));
+		return findUserByQuery(query);
+	}
+	@Override
+	public void editUser (User user) {
+		mongoTemplate.save(user);
 	}
 }
