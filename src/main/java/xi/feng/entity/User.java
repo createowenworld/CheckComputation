@@ -1,14 +1,10 @@
 package xi.feng.entity;
 
-import static org.hamcrest.CoreMatchers.nullValue;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.apache.logging.log4j.core.appender.rolling.action.IfFileName;
-import org.junit.runners.Parameterized.Parameter;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -105,7 +101,13 @@ public class User implements Serializable{
 		SimpleDateFormat sdf =  new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
 		this.last_modify_time = sdf.format(last_modify_time);
 	}
-	
+	/**
+	 * 返回实体对应的数据表名
+	 * @return
+	 */
+	public String getCollectionName () {
+		return "t_oc_user";
+	}
 	public String toString () {
 		String str = "user_id:" + user_id + ",user_account:" + user_account + ",user_pwd:" + user_pwd;
 		return str;
